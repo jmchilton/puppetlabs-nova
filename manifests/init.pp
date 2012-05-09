@@ -2,8 +2,7 @@ class nova(
   # this is how to query all resources from our clutser
   $nova_cluster_id='localcluster',
   $sql_connection = false,
-  # TODO maybe this should default to glance?
-  $image_service = 'nova.image.local.LocalImageService',
+  $image_service = 'nova.image.glance.GlanceImageService',
   # these glance params should be optional
   # this should probably just be configured as a glance client
   $glance_api_servers = 'localhost:9292',
@@ -127,7 +126,7 @@ class nova(
       }
     } else {
       # TODO this only supports setting a single address for the api server
-      Nova_config <<| title == $glance_api_servers |>>
+      Nova_config <<| title == glance_api_servers |>>
     }
   }
 
