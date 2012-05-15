@@ -7,6 +7,7 @@ class nova::db::mysql(
   $user = 'nova',
   $host = '127.0.0.1',
   $allowed_hosts = undef,
+  $charset = 'utf8',
   $cluster_id = 'localzone'
 ) {
 
@@ -19,6 +20,7 @@ class nova::db::mysql(
     user         => $user,
     password     => $password,
     host         => $host,
+    charset      => $charset,
     # I may want to inject some sql
     require      => Class['mysql::server'],
   }
